@@ -13,6 +13,8 @@ router.get("/:id", ArtistController.getArtist);
 
 router.post("/add", ArtistController.addArtist);
 
+router.patch("/update/:id", ArtistController.updateArtist);
+
 module.exports = router;
 
 
