@@ -6,7 +6,7 @@ var logger = require('morgan');
 require("./src/server/models/db")
 
 // var indexRouter = require('./src/server/routes/index');
-var artistRouter = require('./src/server/routes/artists');
+var artistRouter = require('./src/server/routes/artist-router');
 
 var app = express();
 
@@ -17,6 +17,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', indexRouter);
-app.use('/artists', artistRouter);
+app.use('/artist', artistRouter);
 
 module.exports = app;
