@@ -1,13 +1,13 @@
-const ArtistController = require("../../../src/server/controllers/artist-controller");
+const AlbumController = require("../../../src/server/controllers/song-controller");
 
 const request = require("supertest");
 const app = require("../../../app");
 
-describe("Artists router/controller", () => {
-  test("Should successfully connect to '/artist' ", done => {
+describe("Songs router/controller", () => {
+  test("Should successfully connect to '/song' ", done => {
     //Arrange
     request(app)
-      .get("/artist")
+      .get("/song")
       .then(response => {
         expect(response.statusCode).toBe(200);
         done();
