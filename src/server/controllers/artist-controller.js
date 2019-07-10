@@ -48,7 +48,7 @@ class ArtistController {
 
     // id auth, if artist id != param id => error?
 
-    res.send(await Artist.findOneAndRemove({ _id: id }));
+    res.send(await Artist.remove({ _id: id }));
 
     // res.send(
     //   await Artist.findOneAndDelete(
