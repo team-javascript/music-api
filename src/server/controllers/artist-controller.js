@@ -42,6 +42,28 @@ class ArtistController {
     );
   }
 
+  static async deleteArtist(req, res) {
+    const id = req.params.id;
+
+
+    // id auth, if artist id != param id => error?
+
+    res.send(await Artist.findOneAndRemove({ _id: id }));
+
+    // res.send(
+    //   await Artist.findOneAndDelete(
+    //     { _id: id },
+    //     {
+    //       firstName: req.body.firstName,
+    //       lastName: req.body.lastName,
+    //       profilePicture: req.body.profilePicture,
+    //       albumList: req.body.albumList
+    //     },
+    //     { new: true }
+    //   )
+    // );
+  }
+
   // id auth, if artist id != param id => error?
 }
 
