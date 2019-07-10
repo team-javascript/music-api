@@ -36,12 +36,19 @@ class ArtistController {
     const updates = req.body;
 
     let changes = {};
+    // let updateKey = {};
 
-    for(updateKey of Object.keys(updates)){
-      changes[updateKey] = updates[updateKey]
+    for (updateKey of Object.keys(updates)) {
+      changes[updateKey] = updates[updateKey];
     }
 
-    res.send(await Artist.findByIdAndUpdate({_id: id}, {$set: changes}, {new:true}))
+    res.send(
+      await Artist.findByIdAndUpdate(
+        { _id: id },
+        { $set: changes },
+        { new: true }
+      )
+    );
   }
 
   //Delete an Artist
