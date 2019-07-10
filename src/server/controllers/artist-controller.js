@@ -36,7 +36,7 @@ class ArtistController {
     const updates = req.body;
 
     let changes = {};
-    // let updateKey = {};
+    let updateKey = {};
 
     for (updateKey of Object.keys(updates)) {
       changes[updateKey] = updates[updateKey];
