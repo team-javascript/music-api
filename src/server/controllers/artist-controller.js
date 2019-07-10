@@ -30,41 +30,31 @@ class ArtistController {
     res.send(await Artist.find());
   }
 
+  //Update an artist
   static async updateArtist(req, res) {
     const id = req.params.id;
     const updates = req.body;
 
-    
+    let changes = {};
+
+    for (updateKey of Object.keys(updates)) {
+      changes[updateKey] = updates[updateKey];
+    }
 
     res.send(
-      await Artist.findOneAndUpdate(
+      await Artist.findByIdAndUpdate(
         { _id: id },
-        { firstName: req.body.firstName, lastName: req.body.lastName },
+        { $set: changes },
         { new: true }
       )
     );
   }
 
+  //Delete an Artist
   static async deleteArtist(req, res) {
     const id = req.params.id;
 
-
-    // id auth, if artist id != param id => error?
-
     res.send(await Artist.remove({ _id: id }));
-
-    // res.send(
-    //   await Artist.findOneAndDelete(
-    //     { _id: id },
-    //     {
-    //       firstName: req.body.firstName,
-    //       lastName: req.body.lastName,
-    //       profilePicture: req.body.profilePicture,
-    //       albumList: req.body.albumList
-    //     },
-    //     { new: true }
-    //   )
-    // );
   }
 
   // id auth, if artist id != param id => error?
