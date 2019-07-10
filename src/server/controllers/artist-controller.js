@@ -32,6 +32,9 @@ class ArtistController {
 
   static async updateArtist(req, res) {
     const id = req.params.id;
+    const updates = req.body;
+
+    
 
     res.send(
       await Artist.findOneAndUpdate(
