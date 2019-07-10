@@ -36,7 +36,8 @@ class ArtistController {
     res.send(
       await Artist.findOneAndUpdate(
         { _id: id },
-        { firstName: req.body.firstName, lastName: req.body.lastName }
+        { firstName: req.body.firstName, lastName: req.body.lastName },
+        { new: true }
       )
     );
   }
