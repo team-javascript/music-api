@@ -1,5 +1,4 @@
 const AlbumController = require("../../../src/server/controllers/album-controller");
-jest.mock("../../../src/server/controllers/album-controller");
 
 const request = require("supertest");
 const app = require("../../../app");

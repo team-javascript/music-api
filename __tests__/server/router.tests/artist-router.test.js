@@ -1,5 +1,4 @@
 const ArtistController = require("../../../src/server/controllers/artist-controller");
-jest.mock("../../../src/server/controllers/artist-controller");
 
 const request = require("supertest");
 const app = require("../../../app");
