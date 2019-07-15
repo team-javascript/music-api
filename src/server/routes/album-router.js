@@ -3,14 +3,14 @@ const router = express.Router();
 
 const AlbumController = require("../controllers/album-controller");
 
+// Add Album
+router.post("/", AlbumController.addAlbum);
+
 /* GET Albums. */
 router.get("/", AlbumController.getAlbums);
 
 /* GET Album. */
 router.get("/:id", AlbumController.getAlbum);
-
-// Add Album
-router.post("/add", AlbumController.addAlbum);
 
 // Update Album
 router.put("/:id", AlbumController.updateAlbum);

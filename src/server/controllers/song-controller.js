@@ -19,7 +19,7 @@ class SongController {
     const songLink = req.body.songLink;
     const duration = req.body.duration;
 
-    Song.create({
+    await Song.create({
       title: title,
       songLink: songLink,
       duration: duration

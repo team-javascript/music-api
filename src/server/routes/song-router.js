@@ -3,14 +3,14 @@ const router = express.Router();
 
 const SongController = require("../controllers/song-controller");
 
+// Add Song
+router.post("/", SongController.addSong);
+
 /* GET Songs. */
 router.get("/", SongController.getSongs);
 
 /* GET Song. */
 router.get("/:id", SongController.getSong);
-
-// Add Song
-router.post("/add", SongController.addSong);
 
 // Update Song
 router.put("/:id", SongController.updateSong);

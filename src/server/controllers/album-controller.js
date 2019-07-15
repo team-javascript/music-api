@@ -16,7 +16,7 @@ class AlbumController {
 
   static async addAlbum(req, res, next) {
     const title = req.body.title;
-    const profilePicture = req.body.profilePicture;
+    const albumArt = req.body.albumArt;
     const songList = req.body.songList;
     const recordLabel = req.body.recordLabel;
 

@@ -3,14 +3,15 @@ const router = express.Router();
 
 const ArtistController = require("../controllers/artist-controller");
 
+// Add Artist
+router.post("/", ArtistController.addArtist);
+
 /* GET artists. */
 router.get("/", ArtistController.getArtists);
 
 /* GET artist. */
 router.get("/:id", ArtistController.getArtist);
 
-// Add Artist
-router.post("/add", ArtistController.addArtist);
 
 // Update Artist
 router.put("/:id", ArtistController.updateArtist);
