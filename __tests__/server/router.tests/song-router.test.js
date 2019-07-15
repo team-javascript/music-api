@@ -5,7 +5,7 @@ const app = require("../../../app");
 
 jest.mock("../../../src/server/models/__mocks__/song.js");
 
-describe("SongRoutes", () => {
+describe.skip("SongRoutes", () => {
   describe("addSong", () => {
     test("should get a 200 status and call create/find (1) time", done => {
       request(app)

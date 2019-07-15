@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "test": "jest --colors"
+    "test": "jest /src/public/javascripts/utils/html --colors --watch"
   },
   "dependencies": {
+    "babel-install": "^2.1.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
@@ -16,5 +17,10 @@
     "morgan": "~1.9.1",
     "nodemon": "^1.19.1",
     "supertest": "^4.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "babel-jest": "^24.8.0"
   }
 }
