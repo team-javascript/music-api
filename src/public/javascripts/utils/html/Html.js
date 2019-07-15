@@ -19,11 +19,40 @@ class Html {
     }
   }
 
+  addChild(elementToAdd) {
+    if (elementToAdd.render() instanceof HTMLUnknownElement) {
+      throw new Error('Invalid HTML tag')
+    }
+    this.element.append(elementToAdd.render())
+    return this
+
+  }
+
+  addClass(classToAdd) {
+    if (this.element.classList.contains(classToAdd)) {
+      throw new Error('Class already exists on element.')
+  }
+  this.element.classList.add(classToAdd)
+  return this
+}
+
   _isClassQuery(query) {
     return query.startsWith(".");
   }
 
   _isIdQuery(query) {
     return query.startsWith("#");
+  }
+
+  render() {
+    return this.element;
+  }
+
+  text(textToAdd) {
+    if (textToAdd === undefined) {
+      return this.element.textContent
+    }
+    this.element.textContent = textToAdd
+    return this
   }
 }
