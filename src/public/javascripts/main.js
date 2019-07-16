@@ -25,12 +25,12 @@ export default function main() {
   // add 'header' to app 'div'
   app.addChild(header); 
 
-  Api().getRequest("https://swapi.co/api/people/22", bobaFettData => {
-    console.log(bobaFettData);
+  Api().getRequest("/artist", artistData => {
+    console.log(artistData);
     app.addChild(
       Html("p")
-        .text(bobaFettData.birth_year)
-        .addClass("birthYearComponent")
+        .text(artistData.firstName)
+        .addClass("artistComponent")
     );
   });
 }
