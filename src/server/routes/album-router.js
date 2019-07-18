@@ -18,4 +18,8 @@ router.put("/:id", AlbumController.updateAlbum);
 // Delete Album
 router.delete("/:id", AlbumController.deleteAlbum);
 
+
+// Add song to album
+router.put("/:id/addSong", AlbumController.addSong);
+
 module.exports = router;

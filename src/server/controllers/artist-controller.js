@@ -58,7 +58,28 @@ class ArtistController {
     res.send(await Artist.remove({ _id: id }));
   }
 
-  // id auth, if artist id != param id => error?
+  // Add album
+
+  static async addAlbum(req, res) {
+    const id = req.params.id;
+    const updates = req.body;
+
+    let changes = {};
+    let updateKey = {};
+
+    for (updateKey of Object.keys(updates)) {
+      changes[updateKey] = updates[updateKey];
+    }
+
+    res.send(
+      await Artist.findByIdAndUpdate(
+        { _id: id },
+        { $set: changes },
+        { new: true }
+      )
+    );
+
+  }
 }
 
 module.exports = ArtistController;

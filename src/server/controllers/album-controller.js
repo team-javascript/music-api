@@ -58,7 +58,31 @@ class AlbumController {
     res.send(await Album.remove({ _id: id }));
   }
 
-  // id auth, if Album id != param id => error?
+  // Add Song
+
+  // Add album
+
+  static async addSong(req, res) {
+    const id = req.params.id;
+    const updates = req.body;
+
+    let changes = {};
+    let updateKey = {};
+
+    for (updateKey of Object.keys(updates)) {
+      changes[updateKey] = updates[updateKey];
+    }
+
+    res.send(
+      await Album.findByIdAndUpdate(
+        { _id: id },
+        { $set: changes },
+        { new: true }
+      )
+    );
+
+  }
+
 }
 
 module.exports = AlbumController;
