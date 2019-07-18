@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "parcel ./src/index.html",
+    "dev": "nodemon ./bin/www",
     "test": "jest /src/public/javascripts/utils/html --colors"
   },
   "dependencies": {
@@ -25,5 +25,4 @@
     "babel-jest": "^24.8.0"
   },
   "proxy": "http://localhost:3000"
-
 }
