@@ -62,6 +62,8 @@ class AlbumController {
 
   // Add album
 
+  // FIX this...
+
   static async addSong(req, res) {
     const id = req.params.id;
     const updates = req.body;
@@ -80,9 +82,7 @@ class AlbumController {
         { new: true }
       )
     );
-
   }
-
 }
 
 module.exports = AlbumController;
