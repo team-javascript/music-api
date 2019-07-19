@@ -64,24 +64,17 @@ class AlbumController {
 
   // FIX this...
 
-  static async addSong(req, res) {
+  static async addSongs(req, res) {
     const id = req.params.id;
-    const updates = req.body;
+    const songsToAdd = req.body; // this is an array if multiple songs added!
 
-    let changes = {};
-    let updateKey = {};
+    const albumToAdd = await Album.findById({ _id: id });
+    songsToAdd.forEach(song => {
+      albumToAdd.songList.push(song);
+    });
+    albumToAdd.save(albumToAdd);
 
-    for (updateKey of Object.keys(updates)) {
-      changes[updateKey] = updates[updateKey];
-    }
-
-    res.send(
-      await Album.findByIdAndUpdate(
-        { _id: id },
-        { $set: changes },
-        { new: true }
-      )
-    );
+    res.send(await albumToAdd);
   }
 }
 
