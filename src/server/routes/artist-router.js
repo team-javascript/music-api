@@ -20,6 +20,6 @@ router.delete("/:id", ArtistController.deleteArtist);
 
 // Add album to artist
 
-router.put("/:id/addAlbum", ArtistController.addAlbum)
+router.put("/:id/addAlbums", ArtistController.addAlbums)
 
 module.exports = router;

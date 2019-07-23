@@ -18,13 +18,11 @@ class ArtistController {
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const profilePicture = req.body.profilePicture;
-    const albumList = req.body.albumList;
 
     Artist.create({
       firstName: firstName,
       lastName: lastName,
-      profilePicture: profilePicture,
-      albumList: albumList
+      profilePicture: profilePicture
     });
 
     res.send(await Artist.find());
@@ -60,25 +58,17 @@ class ArtistController {
 
   // Add album
 
-  static async addAlbum(req, res) {
+  static async addAlbums(req, res) {
     const id = req.params.id;
-    const updates = req.body;
+    const albumsToAdd = req.body; // this is an array if multiple songs added!
 
-    let changes = {};
-    let updateKey = {};
+    const artistToAdd = await Artist.findById({ _id: id });
+    albumsToAdd.forEach(album => {
+      artistToAdd.albumList.push(album);
+    });
+    artistToAdd.save(artistToAdd);
 
-    for (updateKey of Object.keys(updates)) {
-      changes[updateKey] = updates[updateKey];
-    }
-
-    res.send(
-      await Artist.findByIdAndUpdate(
-        { _id: id },
-        { $set: changes },
-        { new: true }
-      )
-    );
-
+    res.send(await artistToAdd);
   }
 }
 
