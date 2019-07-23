@@ -11,7 +11,7 @@ class ArtistController {
 
     // id auth, if artist id != param id => error?
 
-    res.send(await Artist.findOne({ _id: id }));
+    res.send(await Artist.findOne({ _id: id }).populate("albumList"));
   }
 
   static async addArtist(req, res, next) {

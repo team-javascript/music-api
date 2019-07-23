@@ -11,19 +11,17 @@ class AlbumController {
 
     // id auth, if Album id != param id => error?
 
-    res.send(await Album.findOne({ _id: id }));
+    res.send(await Album.findOne({ _id: id }).populate("songList"));
   }
 
   static async addAlbum(req, res, next) {
     const title = req.body.title;
     const albumArt = req.body.albumArt;
-    const songList = req.body.songList;
     const recordLabel = req.body.recordLabel;
 
     Album.create({
       title: title,
       albumArt: albumArt,
-      songList: songList,
       recordLabel: recordLabel
     });
 
