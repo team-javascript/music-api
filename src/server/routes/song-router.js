@@ -18,5 +18,11 @@ router.put("/:id", SongController.updateSong);
 // Delete Song
 router.delete("/:id", SongController.deleteSong);
 
+// Increase Rating
+router.get("/:id/increaseRating", SongController.increaseRating)
+
+// Decrease Rating
+router.get("/:id/decreaseRating", SongController.decreaseRating)
+
 
 module.exports = router;

@@ -22,7 +22,7 @@ class SongController {
     await Song.create({
       title: title,
       songLink: songLink,
-      duration: duration
+      duration: duration,
     });
 
     res.send(await Song.find());
@@ -56,7 +56,33 @@ class SongController {
     res.send(await Song.remove({ _id: id }));
   }
 
-  // id auth, if Song id != param id => error?
+  
+
+  // rating increment
+
+  static async increaseRating(req, res, next) {
+    const id = req.params.id;
+    const song = await Song.findOne({ _id: id });
+
+    song.rating++;
+
+    song.save((err, song) => {
+      if (err) console.error(err);
+      res.send(song);
+    });
+  }
+
+  static async decreaseRating(req, res, next) {
+    const id = req.params.id;
+    const song = await Songs.findOne({ _id: id });
+
+    song.rating--;
+
+    song.save((err, song) => {
+      if (err) console.error(err);
+      res.send(song);
+    });
+  }
 }
 
 module.exports = SongController;
