@@ -1,6 +1,6 @@
-const Comment = require('../models/comment');
-const Song = require('../models/Song');
-const Tag = require('../models/tag');
+const Comment = require("../models/comment");
+const Song = require("../models/Song");
+const Tag = require("../models/tag");
 
 class SongController {
   static async getSongs(req, res, next) {
@@ -11,9 +11,7 @@ class SongController {
   static async getSong(req, res) {
     const id = req.params.id;
 
-    // id auth, if Song id != param id => error?
-
-    res.send(await Song.findOne({ _id: id }).populate(['comments', 'tags']));
+    res.send(await Song.findOne({ _id: id }).populate(["comments", "tags"]));
   }
 
   static async addSong(req, res, next) {
@@ -30,7 +28,7 @@ class SongController {
     res.send(await Song.find());
   }
 
-  //Update an Song
+  // Update an Song
   static async updateSong(req, res) {
     const id = req.params.id;
     const updates = req.body;
@@ -84,6 +82,8 @@ class SongController {
     });
   }
 
+  // Add Comment
+
   static async addComment(req, res) {
     const id = req.params.id;
     const song = await Song.findOne({ _id: id });
@@ -101,6 +101,8 @@ class SongController {
       res.send(song);
     });
   }
+
+  // Add Tag
 
   static async addTag(req, res) {
     const id = req.params.id;
