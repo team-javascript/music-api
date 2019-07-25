@@ -1,5 +1,6 @@
 const Comment = require('../models/comment');
 const Song = require('../models/Song');
+const Tag = require('../models/tag');
 
 class SongController {
   static async getSongs(req, res, next) {
@@ -12,7 +13,7 @@ class SongController {
 
     // id auth, if Song id != param id => error?
 
-    res.send(await Song.findOne({ _id: id }).populate('comments'));
+    res.send(await Song.findOne({ _id: id }).populate(['comments', 'tags']));
   }
 
   static async addSong(req, res, next) {
@@ -73,7 +74,7 @@ class SongController {
 
   static async decreaseRating(req, res, next) {
     const id = req.params.id;
-    const song = await Songs.findOne({ _id: id });
+    const song = await Song.findOne({ _id: id });
 
     song.rating--;
 
@@ -96,6 +97,24 @@ class SongController {
     });
 
     commentToAdd.save((err, commentToAdd) => {
+      if (err) return console.error(err);
+      res.send(song);
+    });
+  }
+
+  static async addTag(req, res) {
+    const id = req.params.id;
+    const song = await Song.findOne({ _id: id });
+    const tagToAdd = new Tag({
+      name: req.body.name
+    });
+    song.tags.push(tagToAdd);
+
+    song.save((err, song) => {
+      if (err) return console.error(err);
+    });
+
+    tagToAdd.save((err, tagToAdd) => {
       if (err) return console.error(err);
       res.send(song);
     });

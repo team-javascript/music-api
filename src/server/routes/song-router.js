@@ -27,4 +27,7 @@ router.get('/:id/decreaseRating', SongController.decreaseRating);
 //add Comment
 router.put('/:id/addComment', SongController.addComment);
 
+//add Tag
+router.put('/:id/addTag', SongController.addTag);
+
 module.exports = router;
