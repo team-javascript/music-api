@@ -1,28 +1,30 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
-const SongController = require("../controllers/song-controller");
+const SongController = require('../controllers/song-controller');
 
 // Add Song
-router.post("/", SongController.addSong);
+router.post('/', SongController.addSong);
 
 /* GET Songs. */
-router.get("/", SongController.getSongs);
+router.get('/', SongController.getSongs);
 
 /* GET Song. */
-router.get("/:id", SongController.getSong);
+router.get('/:id', SongController.getSong);
 
 // Update Song
-router.put("/:id", SongController.updateSong);
+router.put('/:id', SongController.updateSong);
 
 // Delete Song
-router.delete("/:id", SongController.deleteSong);
+router.delete('/:id', SongController.deleteSong);
 
 // Increase Rating
-router.get("/:id/increaseRating", SongController.increaseRating)
+router.get('/:id/increaseRating', SongController.increaseRating);
 
 // Decrease Rating
-router.get("/:id/decreaseRating", SongController.decreaseRating)
+router.get('/:id/decreaseRating', SongController.decreaseRating);
 
+//add Comment
+router.put('/:id/addComment', SongController.addComment);
 
 module.exports = router;
