@@ -3,16 +3,22 @@ const Song = require("../models/Song");
 const Tag = require("../models/tag");
 
 class SongController {
+  // Read Songs
+
   static async getSongs(req, res, next) {
     const Songs = await Song.find();
     res.send(Songs);
   }
+
+  // Read Song
 
   static async getSong(req, res) {
     const id = req.params.id;
 
     res.send(await Song.findOne({ _id: id }).populate(["comments", "tags"]));
   }
+
+  // Add Song
 
   static async addSong(req, res, next) {
     const title = req.body.title;
@@ -28,7 +34,8 @@ class SongController {
     res.send(await Song.find());
   }
 
-  // Update an Song
+  // Update a Song
+
   static async updateSong(req, res) {
     const id = req.params.id;
     const updates = req.body;
@@ -49,7 +56,7 @@ class SongController {
     );
   }
 
-  //Delete an Song
+  // Delete a Song
   static async deleteSong(req, res) {
     const id = req.params.id;
 
